@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.container {
+  display: flex;
+  justify-content: center;
+}
+#game-board {
+  display: grid;
+  width: 300px;
+  height: 300px;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+.square {
+  width: 100px;
+  height: 100px;
+  border: 2px solid black;
+}

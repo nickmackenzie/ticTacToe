@@ -6,10 +6,14 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>TicTacToe</title>
   <link rel="stylesheet" href="/css/style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap" rel="stylesheet">
+
 </head>
 
 <body>
+  <h1>Tic Tac Toe</h1>
   <div class="container">
+
     <div id="game-board">
       <div class="square" id="0" data-row="0"></div>
       <div class="square" id="1" data-row="0"></div>
@@ -23,8 +27,11 @@
     </div>
 
   </div>
-  <button>Reset</button>
-  <h1 id="winMsg"></h1>
+  <div class="button-wrapper">
+    <div class="btn"> <button>Reset</button></div>
+
+    <h1 id="winMsg"></h1>
+  </div>
   <script src="/js/game.js"></script>
 </body>
 

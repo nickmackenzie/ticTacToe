@@ -5,6 +5,7 @@ let square = document.querySelectorAll(".square");
 let winMsg = document.getElementById("winMsg")
 /*----- app's state (variables) -----*/
 let playerTurn = -1; /* I will use this as a "switch" to cycle through "X" and "O" */
+
 let boardArray = [   /* This array will mirror what the player is doing on the board with 1 and 2 */
   [, ,],
   [, ,],
@@ -57,7 +58,6 @@ function winChecker() {
     if (horizonalWin === 6 || diagonalWinOne === 6 || diagonalWinTwo === 6 || verticalWin === 6 && clickCounter < 9) {
       winMessage = "O has won"
       return winMsg.append(winMessage)
-
     } else if
       (horizonalWin === 3 || diagonalWinOne === 3 || diagonalWinTwo === 3 || verticalWin === 3 && clickCounter < 9) {
       winMessage = "X has won"

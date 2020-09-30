@@ -24,30 +24,26 @@ function playerClick(e) {
   let squareId = e.target.id; /* Using the target. id and the given dataset of "row", I can use these values to splice them into my boardArray*/
   let rowId = e.target.dataset.row;
   console.log(rowId, squareId);
-  if (e.target.textContent == "O" || e.target.textContent == "X") { /*This is checking if the space has already been*/
+  if (e.target.textContent == "O" || e.target.textContent == "X") { /*This is checking if the space has already been taken*/
     alert("Player has already selected this sqaure")
   }
-  if (playerTurn === -1 && e.target.textContent === "" && clickCounter < 8) {
+
+  if (playerTurn === -1 && e.target.textContent === "") {
     playerTurn = playerTurn + 1;
     e.target.textContent = "X";
     boardArray[rowId].splice(squareId, 1, 1);
-    console.log(boardArray);
     clickCounter = clickCounter + 1
-    console.log(clickCounter)
+    console.log("clicked", clickCounter)
     winChecker();
 
-  } else if (playerTurn === 0 && e.target.textContent === "" && clickCounter < 8) {
+  } else if (playerTurn === 0 && e.target.textContent === "") {
     playerTurn = playerTurn - 1;
     e.target.textContent = "O";
     boardArray[rowId].splice(squareId, 1, 2);
     clickCounter = clickCounter + 1
-    console.log(clickCounter)
+    console.log("clicked", clickCounter)
     winChecker()
-  } else if (clickCounter === 8) {
-    winMessage = "It's a tie"
-    return winMsg.append(winMessage)
   }
-
 }
 
 
@@ -58,12 +54,16 @@ function winChecker() {
     let verticalWin = boardArray[0][i] + boardArray[1][i] + boardArray[2][i];
     let diagonalWinOne = boardArray[0][0] + boardArray[1][1] + boardArray[2][2]
     let diagonalWinTwo = boardArray[0][2] + boardArray[1][1] + boardArray[2][0]
-    if (horizonalWin === 6 || diagonalWinOne === 6 || diagonalWinTwo === 6 || verticalWin === 6) {
+    if (horizonalWin === 6 || diagonalWinOne === 6 || diagonalWinTwo === 6 || verticalWin === 6 && clickCounter < 9) {
       winMessage = "O has won"
       return winMsg.append(winMessage)
+
     } else if
-      (horizonalWin === 3 || diagonalWinOne === 3 || diagonalWinTwo === 3 || verticalWin === 3) {
+      (horizonalWin === 3 || diagonalWinOne === 3 || diagonalWinTwo === 3 || verticalWin === 3 && clickCounter < 9) {
       winMessage = "X has won"
+      return winMsg.append(winMessage)
+    } else if (clickCounter === 9) {
+      winMessage = "It's a tie"
       return winMsg.append(winMessage)
     }
   }

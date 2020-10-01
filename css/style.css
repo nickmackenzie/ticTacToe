@@ -11,6 +11,10 @@ h1 {
   color: #0d0d0d;
   font-size: 60px;
 }
+
+h2 {
+  text-align: center;
+}
 .container {
   margin:20px;
   display: flex;

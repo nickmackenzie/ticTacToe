@@ -4,6 +4,7 @@ let btn = document.querySelector("button")
 let square = document.querySelectorAll(".square");
 let winMsg = document.getElementById("winMsg")
 let container = document.getElementById("container")
+let playerIdicator = document.getElementById("player-turn")
 
 
 /*----- app's state (variables) -----*/
@@ -46,6 +47,7 @@ function playerClick(e) {
     boardArray[rowId].splice(squareId, 1, 1);
     clickCounter = clickCounter + 1
     console.log("clicked", clickCounter)
+    playerIdicator.textContent = "Its Your Turn O"
     winChecker();
 
   } else if (playerTurn === 0 && e.target.textContent === "") {
@@ -54,6 +56,7 @@ function playerClick(e) {
     boardArray[rowId].splice(squareId, 1, 2);
     clickCounter = clickCounter + 1
     console.log("clicked", clickCounter)
+    playerIdicator.textContent = "Its Your Turn X"
     winChecker()
   }
 }
@@ -98,4 +101,5 @@ function resetBoard(e) { /* This will reset the game, sets the array back to emp
   ];
   clickCounter = 0;
   winMsg.textContent = ""
+  playerIdicator.textContent = "Its Your Turn X"
 }

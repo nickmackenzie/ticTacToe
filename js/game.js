@@ -3,23 +3,34 @@ let playerBoard = document.querySelector("#game-board");
 let btn = document.querySelector("button")
 let square = document.querySelectorAll(".square");
 let winMsg = document.getElementById("winMsg")
+let container = document.getElementById("container")
+
+
 /*----- app's state (variables) -----*/
 let playerTurn = -1; /* I will use this as a "switch" to cycle through "X" and "O" */
-
+let winMessage = ""
 let boardArray = [   /* This array will mirror what the player is doing on the board with 1 and 2 */
   [, ,],
   [, ,],
   [, ,],
 ];
-
 let clickCounter = 0; /* Using a click counter, it will see if the user
                          has clicked 9 times and if no winner 
                          has been declared, it will count as a tie */
 
+
 /*----- cached element references -----*/
+
+
+
+
 /*----- event listeners -----*/
 playerBoard.addEventListener("click", playerClick);
 btn.addEventListener("click", resetBoard)
+
+
+
+
 /*----- functions -----*/
 function playerClick(e) {
   let squareId = e.target.id; /* Using the target. id and the given dataset of "row", I can use these values to splice them into my boardArray*/
@@ -57,21 +68,25 @@ function winChecker() {
     let diagonalWinTwo = boardArray[0][2] + boardArray[1][1] + boardArray[2][0]
     if (horizonalWin === 6 || diagonalWinOne === 6 || diagonalWinTwo === 6 || verticalWin === 6 && clickCounter < 9) {
       winMessage = "O has won"
-      return winMsg.append(winMessage)
+      winMsg.append(winMessage)
+      return setTimeout(resetBoard, 900)
     } else if
       (horizonalWin === 3 || diagonalWinOne === 3 || diagonalWinTwo === 3 || verticalWin === 3 && clickCounter < 9) {
       winMessage = "X has won"
-      return winMsg.append(winMessage)
+      winMsg.append(winMessage)
+      return setTimeout(resetBoard, 900)
     } else if (clickCounter === 9) {
       winMessage = "It's a tie"
-      return winMsg.append(winMessage)
+
+      winMsg.append(winMessage)
+      return setTimeout(resetBoard, 900)
     }
+
   }
+
 }
 
 function resetBoard(e) { /* This will reset the game, sets the array back to empty, player back to X and win message */
-  e.preventDefault()
-
   for (i = 0; i < square.length; i++) {
     square[i].textContent = ""
   }

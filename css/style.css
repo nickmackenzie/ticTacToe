@@ -67,6 +67,9 @@ button:focus {
 }
 
 @media screen and (max-width: 600px) {
+  .square {
+    font-size: 30px;
+  }
   button {
     font-size: 1rem;
   }
